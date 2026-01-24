@@ -1,5 +1,5 @@
-# 42_Python_Module_03
-42_Python_Module_03
+# Python Module 03
+Project: Python Module 03
 
 # Data Quest: Dominando las Colecciones de Python 
 
@@ -7,14 +7,14 @@
 
 A lo largo de estos ejercicios, he desarrollado el sistema **PixelMetrics 3000**, una plataforma de analítica que procesa desde puntuaciones de jugadores hasta flujos de datos masivos en tiempo real.
 
-## 🛠️ Reglas Generales
+##  Reglas Generales
 
 - **Lenguaje:** Python 3.10+.
 - **Estilo:** Código adherido al estándar de linter flake8.
 - **Restricciones:** Uso exclusivo de la librería `sys` para argumentos de línea de comandos. No se permite la lectura/escritura de archivos externos.
 - **Robustez:** Gestión exhaustiva de excepciones (`try/except`) para evitar caídas del sistema.
 
-## 🕹️ Desglose de los Ejercicios
+##  Desglose de los Ejercicios
 
 ### [Ex0] Misión de Comandos (ft_command_quest.py)
 El nivel inicial se centra en la comunicación entre el usuario y el programa.
@@ -57,7 +57,7 @@ El jefe final: la transformación elegante de datos.
 - **Estructura:** Comprensiones (List/Dict/Set comprehensions).
 - **Funcionalidad:** Transformar datos en bruto en información valiosa (ej. filtrar máximos goleadores o mapear regiones activas) en una sola línea de código.
 
-## 🚀 Cómo ejecutar
+##  Cómo ejecutar
 
 Cada ejercicio se ejecuta desde la terminal pasando los parámetros necesarios:
 
