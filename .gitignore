@@ -5,7 +5,12 @@ venv/
 
 # Caché de Python
 __pycache__/
+../__pycache__/
+
 *.py[cod]
 
 # Flake8
 .flake8
+
+# Generator
+data_generator.py
