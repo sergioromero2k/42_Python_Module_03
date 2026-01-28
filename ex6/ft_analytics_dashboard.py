@@ -1,7 +1,15 @@
 #!/usr/bin/env python3
 
+"""
+Simple game analytics script.
+Demonstrates list, dict, and set comprehensions
+using a small in-memory dataset of players, sessions,
+and achievements.
+"""
 
-def main():
+
+def main() -> None:
+    # Raw game data (players, sessiones, modes, achievements)
     raw_data = {
         "players": {
             "alice": {
@@ -76,6 +84,7 @@ def main():
         ],
     }
 
+    # Shortcut to player data
     players = raw_data["players"]
 
     print("=== Game Analytics Dashboard ===\n")
@@ -84,7 +93,9 @@ def main():
     high_score = [
         name for name, value in players.items() if value["total_score"] > 2000
     ]
+    # Double each player's score
     score_doubled = [value["total_score"] * 2 for value in players.values()]
+    # Players with many sessions
     active_player = [
         name for name, value in players.items() if value["sessions_played"] > 7
     ]
@@ -94,13 +105,18 @@ def main():
     print("Active players:", active_player)
     print("")
 
-    # Dict Comprehension Examples
-    player_score = {name: value["total_score"] for name, value in players.items()}
+    # Dict Comprehension
+    # Map player to total score
+    player_score = {
+        name: value["total_score"] for name, value in players.items()}
 
+    # Count players by score range
     score_categories = {
         "high": len(
-            [name for name, value in players.items() 
-            if value["total_score"] > 5000]
+            [
+                name for name, value in
+                players.items() if value["total_score"] > 5000
+            ]
         ),
         "medium": len(
             [
@@ -110,10 +126,13 @@ def main():
             ]
         ),
         "low": len(
-            [name for name, value in players.items() if value["total_score"] <= 3000]
+            [
+                name for name, value in
+                players.items() if value["total_score"] <= 3000
+            ]
         ),
     }
-
+    # Map player to achievement count
     achieve_count = {
         name: value["achievements_count"] for name, value in players.items()
     }
@@ -122,9 +141,41 @@ def main():
     print("Score categories:", score_categories)
     print("Achievement counts:", achieve_count)
     print("")
+    # Set comprehension examples
+    print("=== Set Comprehension Examples ===")
+    # Unique player game
+    uq_player = {name for name, value in players.items()}
+    # Unique achievements
+    uq_achiev = {ach for ach in raw_data['achievements']}
+    # Add region info to players
+    players["alice"]["region"] = "north"
+    players["bob"]["region"] = "east"
+    players["charlie"]["region"] = "central"
+    players["diana"]["region"] = "north"
+    # Active regions
+    active_regions = {value["region"] for value in players.values()}
+    print("Unique players: ", uq_player)
+    print("Unique achievements: ", uq_achiev)
+    print("Active regions: ", active_regions)
+    print("")
 
-    # Set Comprehension Examples
-    # Aquí haces tú tu código
+    print("=== Combined Analysis ===")
+    print("Total players: ", len(uq_player))
+    print("Total unique achievements: ", len(uq_achiev))
+    # Average score calculation
+    print("Average score: ", (sum(score_doubled)/(len(score_doubled)*2)))
+    # rebuild score dict (explicit for clarity)
+    player_score = {
+        name: value["total_score"] for name, value in players.items()}
+
+    # Find top performer using max()
+    top_name = max(player_score, key=player_score.get)
+    top_score = player_score[top_name]
+    top_achievements = players[top_name]["achievements_count"]
+
+    print(
+        f"Top performer: {top_name} ({top_score} points, "
+        f"{top_achievements} achievements)")
 
 
 if __name__ == "__main__":
